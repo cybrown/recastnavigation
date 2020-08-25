@@ -122,39 +122,24 @@ project "RecastSharedLib"
 	kind "SharedLib"
 	includedirs {
 		"../RecastSharedLib/Include",
-		"../RecastSharedLib/Contrib",
-		"../RecastSharedLib/Contrib/fastlz",
+		"../RecastDemo/Include",
+		"../RecastDemo/Contrib",
+		"../RecastDemo/Contrib/fastlz",
 		"../DebugUtils/Include",
 		"../Detour/Include",
 		"../DetourCrowd/Include",
 		"../DetourTileCache/Include",
 		"../Recast/Include"
 	}
-	files	{
+	files {
 		"../RecastSharedLib/Include/*.h",
-		"../RecastSharedLib/Source/*.cpp",
-		"../RecastDemo/Contrib/fastlz/*.h",
-		"../RecastDemo/Contrib/fastlz/*.c"
+		"../RecastSharedLib/Source/*.cpp"
 	}
-
 	-- project dependencies
 	links {
-		"DebugUtils",
 		"Detour",
-		"DetourCrowd",
-		"DetourTileCache",
 		"Recast"
 	}
-
-	-- distribute executable in RecastSharedLib/Bin directory
-	targetdir "Bin"
-
-	-- linux library cflags and libs
-	configuration { "linux", "gmake" }
-		buildoptions {
-			"-Wno-ignored-qualifiers",
-			"-Wno-class-memaccess"
-		}
 
 project "RecastDemo"
 	language "C++"
